@@ -3,6 +3,7 @@
 non_stream/
 terminal/
 .vscode/
+tmp/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

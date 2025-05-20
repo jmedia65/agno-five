@@ -74,7 +74,7 @@ agno-five/
 │   ├── agno3.py      # Level 3: Agent with memory and reasoning
 │   ├── agno4.py      # Level 4: Multi-agent teams
 │   └── agno5.py      # Level 5: Agentic systems
-└── tmp/             # Storage for databases
+└── tmp/              # Storage for databases (not tracked in git)
 ```
 
 ## 💻 Development
