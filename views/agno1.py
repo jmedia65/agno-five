@@ -8,8 +8,21 @@ from agno.tools.duckduckgo import DuckDuckGoTools
 load_dotenv()
 
 st.title("📊 Level 1: Agent with tools and instructions")
+
 st.write(
-    "Instructions 'teach' the Agent how to achieve its task and tools let Agents interact with external environments to push or pull data."
+    """
+    Instructions 'teach' the Agent how to achieve its task and tools let Agents interact with external environments to push or pull data.
+    
+    **This Agent:**
+    * Has access to web search through DuckDuckGo
+    * Is configured to explain the Agno framework
+    * Can provide code examples and explanations
+    
+    **Try asking:**
+    * "What is Agno and what can it do?"
+    * "Show me an example of creating a simple Agno agent"
+    * "How do Agno agents use tools?"
+    """
 )
 
 # Initialize session state for messages

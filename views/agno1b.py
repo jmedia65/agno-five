@@ -11,10 +11,21 @@ load_dotenv()
 
 
 st.title("📊 Level 1b: Agent with tools and instructions PLUS context")
+
 st.write(
-    "Agent Context is another amazing feature of Agno. context is a dictionary that contains a set of functions (or dependencies) \
-        that are resolved before the agent runs.Instructions 'teach' the Agent how to achieve its task and tools \
-            let Agents interact with external environments to push or pull data."
+    """
+    Building on Level 1, this agent demonstrates the power of **Context** - a key feature of Agno that provides dynamic data to the agent at runtime.
+    
+    **This Agent:**
+    * Fetches real-time top stories from HackerNews via a context function
+    * Summarizes and discusses current tech news
+    * Can search for additional information about news stories
+    
+    **Try asking:**
+    * "Summarize the top HackerNews stories"
+    * "Tell me more about the top HackerNews story"
+    * "What are the trending HackerNews topics today?"
+    """
 )
 
 # Initialize session state for messages
@@ -123,6 +134,9 @@ with st.expander("📚 View the Code for the Agno Agent Level 1b", expanded=Fals
         )
 
         return agno_assist
+
+    # Get agent instance
+    agent = initialize_components()    
     """
 
     st.code(code, language="python")

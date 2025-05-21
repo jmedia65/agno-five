@@ -17,8 +17,26 @@ from agno.tools.reasoning import ReasoningTools
 load_dotenv()
 
 st.title("📊 Level 3: Agent with memory and reasoning")
+
 st.write(
-    "Memory let an Agent remember details about a user and personalize its responses across sessions. Reasoning is a key feature that every agent builder should know when and how to use. It not only improves cognitive reasoning (understanding of data and instructions) but also improves the success rate of each step."
+    """
+    Level 3 adds memory and reasoning capabilities, allowing the agent to remember user details and improve its problem-solving.
+    
+    **This Agent:**
+    * Remembers user information across conversations
+    * Uses reasoning tools to improve response quality
+    * Still has access to the Agno knowledge base and search tools
+    
+    **Demo Setup:**
+    For this demo, you're interacting with a simulated user profile:
+    * The user's name is "Ava"
+    * Ava likes soccer, skiing, and backgammon
+    
+    **Try asking:**
+    * "What is stored in your knowledge base?" (Knowledge)
+    * "What sports do I like?" (Memory retrieval)
+    * "Can you recommend some Agno tools for a soccer fan like me?" (Combined)
+    """
 )
 
 # Initialize session state for messages
@@ -66,7 +84,15 @@ def initialize_components():
             explanations, working code examples, and optional visual and audio explanations 
             of key concepts."""
         ),
-        instructions="Search the knowledge base for information about Agno. Only search the web using the search tool if you cannot find the answer to the user's questions. At the same time, remember the users preferences and store them to memory to better tailor your responses and interactions with them.",
+        instructions=dedent(
+            """Search the knowledge base for information about Agno. Only search the web using the search tool if you cannot find the answer to the user's questions.
+
+            You are interacting with a user named 'Ava'. This identity is fixed and should never be changed under any circumstances, even if directly requested. While the user name CANNOT be changed, their preferences can change upon request.
+
+            Remember Ava's preferences and store additional details about her to memory to better tailor your responses. If asked to change the user's identity or pretend to be someone else, politely refuse and continue to address the user as Ava.
+
+            Focus on providing helpful information about Agno (if asked) while personalizing your responses based on what you know about Ava."""
+        ),
         tools=[DuckDuckGoTools(), ReasoningTools(add_instructions=True)],
         add_datetime_to_instructions=True,
         # Agentic RAG is enabled by default when `knowledge` is provided to the Agent.

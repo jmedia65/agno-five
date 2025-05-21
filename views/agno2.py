@@ -14,8 +14,21 @@ from agno.storage.sqlite import SqliteStorage
 load_dotenv()
 
 st.title("📊 Level 2: Agent with knowledge and storage")
+
 st.write(
-    "Rarely does a model have all the information it needs to achieve its task and we obviously can't jam everything in the context, so we give the Agent knowledge that it searches at runtime (i.e Agentic RAG or Dynamic few-shot)."
+    """
+    Level 2 adds a knowledge base and session storage to the agent, making it smarter and persistent.
+    
+    **This Agent:**
+    * Has access to the Agno documentation through a vector database
+    * Searches its knowledge first before falling back to web search
+    * Remembers previous interactions within the same chat session
+    
+    **Try asking:**
+    * "What are the core components of Agno?"
+    * "How does Agno handle memory?"
+    * "Compare Agno Agents to traditional chatbots"
+    """
 )
 
 # Initialize session state for messages
@@ -113,7 +126,7 @@ with st.expander("📚 View the Code for the Agno Agent Level 2", expanded=False
         return knowledge_base, storage, agno_assist
 
     # Get agent instance
-    agent = initialize_components()    
+    knowledge_base, storage, agent = initialize_components()    
     """
 
     st.code(code, language="python")

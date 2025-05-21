@@ -18,7 +18,7 @@ Each level builds upon the previous one:
 
 ## 🚀 Live Demo
 
-[Access the live demo here](https://your-demo-url.com) (coming soon)
+[Access the live demo here](https://agnofive.onrender.com/)
 
 ## 🛠️ Installation
 
@@ -85,24 +85,48 @@ agno-five/
 
 ## 🌐 Deployment
 
-You can deploy this project using:
+This project can be deployed using Docker and Render:
 
-### Render
+### Local Docker Deployment
 
-1. Connect your GitHub repository
-2. Set environment variables for your API keys
-3. Add a startup command: `streamlit run app.py`
+1. Build and run the Docker container locally:
 
-### Streamlit Cloud
+   ```bash
+   # Build and start the container
+   docker-compose up --build
+   ```
 
-1. Connect your GitHub repository
-2. Add your API keys to the secrets
-3. Set the main file to `app.py`
+2. Access the application at http://localhost:8501
+
+### Render Deployment with Persistent Storage
+
+1. Create a Render account and connect your GitHub repository
+
+2. Create a new Web Service:
+
+   - Select "Docker" as the environment
+   - Name your service (e.g., "agno-five")
+   - Keep all other default Docker settings
+
+3. Add environment variables:
+
+   - Add `OPENAI_API_KEY` with your API key value
+
+4. Create a disk for persistent storage:
+
+   - In the "Disks" section, create a new disk
+   - Set mount path to `/app/tmp`
+   - Choose an appropriate size (start with 1GB)
+   - This ensures your database files persist between deployments
+
+5. Deploy your service:
+   - Render will build and deploy your Docker container
+   - Once complete, you'll get a URL to access your application
 
 Note: For production deployment, consider:
 
-- Creating separate API keys with usage limits
-- Replacing file-based databases with cloud alternatives
+- Creating API keys with usage limits
+- Monitoring your disk usage as the vector database grows
 - Adding proper error handling for API limits
 
 ## 🙏 Acknowledgments

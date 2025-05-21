@@ -9,10 +9,21 @@ from agno.tools.reasoning import ReasoningTools
 load_dotenv()
 
 st.title("📊 Level 4: Multi Agent Team")
+
 st.write(
-    "Agents work best when they have a narrow scope (i.e. specialized to a domain) and a reasonably small set of tools \
-        (<10 ish). By putting agents together in a team, we can increase the overall capabilities and solve broader, \
-            more complex problems. Remember to add reasoning, otherwise the Team leader struggles to work on complex tasks."
+    """
+    Level 4 combines specialized agents into teams that can tackle more complex tasks together.
+    
+    **This Team:**
+    * A Financial Researcher agent that gathers information using web search
+    * A Financial Writer agent that creates articles using the research
+    * A Team Coordinator that manages the workflow between them
+    
+    **Try asking for brief financial content:**
+    * "Provide a concise summary of 2025 investment trends"
+    * "Create a short brief on cryptocurrency regulations"
+    * "Draft a brief article about sustainable investing strategies"
+    """
 )
 
 # Initialize session state for messages
@@ -149,7 +160,7 @@ with st.expander("📚 View the Code for the Agno Agent Level 4", expanded=False
 
 
     # Get agent instance
-    memory, knowledge_base, storage, content_team = initialize_components()
+    financial_researcher, financial_writer, content_team = initialize_components()
     """
 
     st.code(code, language="python")
@@ -161,7 +172,7 @@ for message in st.session_state.level4_messages:
         st.markdown(message["content"])
 
 # Handle user input
-if prompt := st.chat_input("Create an article about big investing ideas for 2025"):
+if prompt := st.chat_input("Create a concise brief about big investing ideas for 2025"):
     # Add user message to chat history
     st.session_state.level4_messages.append({"role": "user", "content": prompt})
 
