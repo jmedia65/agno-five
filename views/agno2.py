@@ -51,7 +51,7 @@ def initialize_components():
         ),
     )
 
-    # knowledge_base.load(recreate=False)
+    knowledge_base.load(recreate=False)
 
     storage = SqliteStorage(table_name="agent_sessions", db_file="tmp/agent.db")
 
