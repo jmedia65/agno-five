@@ -16,8 +16,8 @@ st.write(
 )
 
 # Initialize session state for messages
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+if "level4_messages" not in st.session_state:
+    st.session_state.level4_messages = []
 
 
 # Initialize components with caching to prevent recreation on each rerun
@@ -28,7 +28,7 @@ def initialize_components():
     financial_researcher = Agent(
         name="Researcher",
         role="Expert at finding and synthesizing financial information online",
-        model=OpenAIChat("gpt-4o"),
+        model=OpenAIChat("gpt-4.1-mini"),
         tools=[DuckDuckGoTools()],
         instructions=[
             "You are a financial research assistant responsible for gathering and organizing information for the Writer agent.",
@@ -49,7 +49,7 @@ def initialize_components():
     financial_writer = Agent(
         name="Writer",
         role="Writes high-quality financial articles.",
-        model=OpenAIChat("gpt-4o"),
+        model=OpenAIChat("gpt-4.1-mini"),
         tools=[ReasoningTools(add_instructions=True)],
         description=(
             "You are a senior writer for highly respected Financial Advisors blog. Given a topic and relevant information from the Researcher Agent, "
@@ -77,7 +77,7 @@ def initialize_components():
     content_team = Team(
         name="Content Team",
         mode="coordinate",
-        model=OpenAIChat("gpt-4o"),
+        model=OpenAIChat("gpt-4.1-mini"),
         members=[financial_researcher, financial_writer],
         # show_members_responses=True,
         # enable_agentic_context=True,
@@ -156,14 +156,14 @@ with st.expander("📚 View the Code for the Agno Agent Level 4", expanded=False
 
 
 # Display chat message history
-for message in st.session_state.messages:
+for message in st.session_state.level4_messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # Handle user input
 if prompt := st.chat_input("Create an article about big investing ideas for 2025"):
     # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.level4_messages.append({"role": "user", "content": prompt})
 
     # Display user message in chat
     with st.chat_message("user"):
@@ -187,14 +187,14 @@ if prompt := st.chat_input("Create an article about big investing ideas for 2025
             message_placeholder.markdown(full_response)
 
             # Add assistant response to chat history
-            st.session_state.messages.append(
+            st.session_state.level4_messages.append(
                 {"role": "assistant", "content": full_response}
             )
 
 # "Clear Chat" button below the chat
-if st.session_state.messages and st.button(
+if st.session_state.level4_messages and st.button(
     "Clear Chat", use_container_width=True, key="clear_chat"
 ):
     # Only clear the messages, not all session state
-    st.session_state.messages = []
+    st.session_state.level4_messages = []
     st.rerun()

@@ -1,0 +1,13 @@
+services:
+  agno-five:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8501:8501"
+    volumes:
+      # This mounts your local tmp directory to the container's /app/tmp
+      - ./tmp:/app/tmp
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    restart: unless-stopped

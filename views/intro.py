@@ -10,7 +10,7 @@ st.markdown(
     """
 ### Inspired by [Ashpreet Bedi](https://x.com/ashpreetbedi), CEO of [Agno](https://agno.com)
 
-This project is based on a fantastic social media post by Ashpreet Bedi that outlines the progressive complexity
+This project is based on a social media post by Ashpreet Bedi that outlines the progressive complexity
 of AI agents. The concept: **always start with level 1 and add complexity as needed**.
 
 ---

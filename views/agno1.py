@@ -13,8 +13,8 @@ st.write(
 )
 
 # Initialize session state for messages
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+if "level1_messages" not in st.session_state:
+    st.session_state.level1_messages = []
 
 
 # Initialize components with caching to prevent recreation on each rerun
@@ -75,14 +75,14 @@ with st.expander("📚 View the Code for the Agno Agent Level 1", expanded=False
 
 
 # Display chat message history
-for message in st.session_state.messages:
+for message in st.session_state.level1_messages:
     with st.chat_message(message["role"]):
         st.markdown(message["content"])
 
 # Handle user input
 if prompt := st.chat_input("What do you want to learn about Agno?"):
     # Add user message to chat history
-    st.session_state.messages.append({"role": "user", "content": prompt})
+    st.session_state.level1_messages.append({"role": "user", "content": prompt})
 
     # Display user message in chat
     with st.chat_message("user"):
@@ -106,14 +106,14 @@ if prompt := st.chat_input("What do you want to learn about Agno?"):
             message_placeholder.markdown(full_response)
 
             # Add assistant response to chat history
-            st.session_state.messages.append(
+            st.session_state.level1_messages.append(
                 {"role": "assistant", "content": full_response}
             )
 
 # "Clear Chat" button below the chat
-if st.session_state.messages and st.button(
+if st.session_state.level1_messages and st.button(
     "Clear Chat", use_container_width=True, key="clear_chat"
 ):
     # Only clear the messages, not all session state
-    st.session_state.messages = []
+    st.session_state.level1_messages = []
     st.rerun()
