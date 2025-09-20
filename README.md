@@ -16,10 +16,6 @@ Each level builds upon the previous one:
 4. **Level 4:** Multi-agent teams
 5. **Level 5:** Agentic systems
 
-## 🚀 Live Demo
-
-[Access the live demo here](https://agnofive.onrender.com/)
-
 ## 🛠️ Installation
 
 1. Clone this repository:
